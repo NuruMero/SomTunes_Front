@@ -1,0 +1,20 @@
+<div *ngIf="band">
+
+  <h2>{{band.name}} info</h2>
+  <h3><span>id: </span>{{band.id}}</h3>
+  <div>
+    <p>Name: {{band.name}}</p>
+    <p>Genre: {{band.mainGenre}}</p>
+    <p>Origin: {{band.origin}}</p>
+    <p>Members: </p>
+    <ul>
+      <li *ngFor="let member of band.members">
+        <p>{{member}}</p>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button type="button" routerLink="/editBand/{{band.id}}">Edit Band</button>
+    <button type="button" (click)="goBack()">Go back</button>
+  </div>
+</div>

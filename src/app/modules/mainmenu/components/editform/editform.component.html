@@ -1,0 +1,47 @@
+<h2>Editing band ID: {{checkband.id}}</h2>
+
+<div class="formcontainer">
+  <form [formGroup]="bandForm" (ngSubmit)="onSubmit">
+    <div class="formchild">
+      <label for="name">Name </label>
+      <input type="text" class="form-control" id="name" formControlName="name"
+        required>
+      <div *ngIf="bandForm.controls['name'].invalid &&
+        (bandForm.controls['name'].dirty ||
+        bandForm.controls['name'].touched)">
+        <div *ngIf="bandForm.controls['name'].errors?.['required']">
+          You need to add a name to proceed.
+        </div>
+      </div>
+      <br>
+
+      <label for="mainGenre">Genre </label>
+      <input type="text" class="form-control" id="mainGenre" formControlName="mainGenre">
+      <br>
+
+      <label for="origin">Origin </label>
+      <input type="text" class="form-control" id="origin" formControlName="origin">
+      <br>
+
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Edit</button>
+      <button type="button" (click)="goBack()">Go back</button>
+    </div>
+  </form>
+
+  <div class="formchild">
+    <label for="tempmember">Add member </label>
+    <input type="text" class="form-control" id="tempmember"
+      [(ngModel)]="tempmember" name="tempmember"/>
+    <button (click)="onSaveMember()">Add to list</button>
+    <br>
+
+    <ul class="members">
+      <li *ngFor="let member of members">
+        <span>{{member}}</span>
+        <button type="button" class="delete"
+          (click)="onDeleteMember(member)">x</button>
+      </li>
+    </ul>
+    <br>
+  </div>
+</div>

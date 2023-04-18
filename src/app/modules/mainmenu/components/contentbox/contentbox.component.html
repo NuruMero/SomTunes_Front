@@ -1,0 +1,19 @@
+<h2>Bands list</h2>
+
+<div>
+  <ul class="bands">
+    <li *ngFor="let band of bands">
+      <a routerLink="/bandinfo/{{band.id}}">
+        <span class="badge">{{band.id}}</span> {{band.name}}
+      </a>
+      <button type="button" class="delete" title="delete band"
+        (click)="delete(band)">x</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <button type="button" routerLink="/createBand">
+    Add Band
+  </button>
+</div>

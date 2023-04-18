@@ -1,0 +1,20 @@
+<div *ngIf="song">
+
+  <h2>{{song.name}} info</h2>
+  <h3><span>id: </span>{{song.id}}</h3>
+  <h3>{{bandname}}</h3>
+  <div>
+    <p>Name: {{song.name}}</p>
+    <p>Genre: {{song.genre}}</p>
+    <p>Release: {{song.release}}</p>
+    <p>Length: {{song.length}}</p>
+  </div>
+  <div>
+    <button type="button" routerLink="/edit/{{song.id}}">Edit Band</button>
+    <button type="button" (click)="goBack()">Go back</button>
+  </div>
+  <div className="lyrics">
+    <h3>Lyrics</h3>
+    <p>{{song.lyrics}}</p>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<h2>Songs list</h2>
+
+<div>
+  <ul class="songs">
+    <li *ngFor="let song of songs">
+      <a routerLink="/songinfo/{{song.id}}">
+        <span class="badge">{{song.id}}</span> {{song.name}}
+      </a>
+      <button type="button" class="delete" title="delete song"
+        (click)="delete(song)">x</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <button type="button" routerLink="/createSong">
+    Add Song
+  </button>
+</div>
