@@ -1,0 +1,47 @@
+<h2>Editing song ID: {{id}}</h2>
+
+<div class="formcontainer">
+  <form [formGroup]="songForm" (ngSubmit)="onSubmit">
+    <div class="formchild">
+      <label for="name">Name </label>
+      <input type="text" class="form-control" id="name" formControlName="name"
+        required>
+      <div *ngIf="songForm.controls['name'].invalid &&
+      (songForm.controls['name'].dirty ||
+      songForm.controls['name'].touched)">
+        <div *ngIf="songForm.controls['name'].errors?.['required']">
+          You need to add a name to proceed.
+        </div>
+      </div>
+      <br>
+
+      <label for="genre">Genre </label>
+      <input type="text" class="form-control" id="genre" formControlName="genre">
+      <br>
+
+      <label for="release">Release date </label>
+      <input type="date" class="form-control" id="release" formControlName="release">
+      <br>
+
+      <label for="length">Length </label>
+      <input type="number" class="form-control" id="length" formControlName="length">
+      <br>
+
+      <label for="band">Band </label>
+      <input type="text" class="form-control" id="band" formControlName="band" (blur)="checkIfBandExists()">
+      <div *ngIf="(songForm.controls['band'].dirty || songForm.controls['band'].touched)">
+        <div *ngIf="!bandExists">
+          This band doesn't exist in our database. You can add it here:
+        </div>
+      </div>
+      <br>
+
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Edit </button>
+      <button type="button" (click)="goBack()">Go back</button>
+    </div>
+    <div class="formchild">
+      <label for="lyrics"><h3>Lyrics </h3></label>
+      <textarea class="form-control" id="lyrics" formControlName="lyrics"></textarea>
+    </div>
+  </form>
+</div>

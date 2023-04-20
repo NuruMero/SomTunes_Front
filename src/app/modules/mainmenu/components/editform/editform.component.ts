@@ -22,13 +22,7 @@ export class EditformComponent {
 
   tempmember: string = "";
 
-  checkband : Band = {
-    id: 0,
-    name: "",
-    mainGenre: "",
-    members: [],
-    origin: ""
-  };
+  id = Number(this.route.snapshot.paramMap.get('id'));
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -42,8 +36,7 @@ export class EditformComponent {
   }
 
   getBand(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.bandService.getById(id)
+    this.bandService.getById(this.id)
       .subscribe(band => {
         this.bandForm.setValue({
           name: band.name,
@@ -51,7 +44,7 @@ export class EditformComponent {
           origin: band.origin
         })
         this.members = band.members
-        this.checkband.id = band.id
+        this.id = band.id
       });
   }
 
@@ -73,7 +66,7 @@ export class EditformComponent {
       alert('You need to add a name!');
       return;
     }
-    let id = this.checkband.id;
+    let id = this.id;
     let name = this.bandForm.get('name')?.value;
     let mainGenre = this.bandForm.get('mainGenre')?.value;
     let members = this.members;

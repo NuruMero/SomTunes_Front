@@ -9,6 +9,8 @@ import { BanddetailsComponent } from './components/banddetails/banddetails.compo
 import { EditformComponent } from './components/editform/editform.component';
 import { ContentboxsongsComponent } from './components/contentboxsongs/contentboxsongs.component';
 import { SongdetailsComponent } from './components/songdetails/songdetails.component';
+import { CreateformsongsComponent } from './components/createformsongs/createformsongs.component';
+import { EditformsongsComponent } from './components/editformsongs/editformsongs.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SongdetailsComponent } from './components/songdetails/songdetails.compo
     BanddetailsComponent,
     EditformComponent,
     ContentboxsongsComponent,
-    SongdetailsComponent
+    SongdetailsComponent,
+    CreateformsongsComponent,
+    EditformsongsComponent
   ],
   imports: [
     CommonModule,

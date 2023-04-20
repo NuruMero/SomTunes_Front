@@ -6,6 +6,8 @@ import { BanddetailsComponent } from '../components/banddetails/banddetails.comp
 import { EditformComponent } from '../components/editform/editform.component';
 import { ContentboxsongsComponent } from '../components/contentboxsongs/contentboxsongs.component';
 import { SongdetailsComponent } from '../components/songdetails/songdetails.component';
+import { CreateformsongsComponent } from '../components/createformsongs/createformsongs.component';
+import { EditformsongsComponent } from '../components/editformsongs/editformsongs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/bands', pathMatch: 'full'},
@@ -14,7 +16,10 @@ const routes: Routes = [
   { path: 'createBand', component: CreateformComponent},
   { path: 'editBand/:id', component: EditformComponent },
   { path: 'songs', component: ContentboxsongsComponent },
-  { path: 'songinfo/:id', component: SongdetailsComponent }
+  { path: 'songinfo/:id', component: SongdetailsComponent },
+  { path: 'createSong', component: CreateformsongsComponent},
+  { path: 'createSong/:band', component: CreateformsongsComponent },
+  { path: 'editSong/:id', component: EditformsongsComponent}
 ]
 
 @NgModule({

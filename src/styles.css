@@ -53,3 +53,14 @@ img#background {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.formcontainer {
+  display: flex;
+}
+
+.formchild {
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
+  float:left;
+}

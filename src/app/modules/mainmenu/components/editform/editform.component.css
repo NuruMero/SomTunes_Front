@@ -1,9 +1,0 @@
-.formcontainer {
-  display: flex;
-}
-
-.formchild {
-  flex: 1;
-  padding: 20px;
-
-}

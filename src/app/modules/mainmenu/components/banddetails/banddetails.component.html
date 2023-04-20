@@ -1,20 +1,40 @@
 <div *ngIf="band">
 
   <h2>{{band.name}} info</h2>
-  <h3><span>id: </span>{{band.id}}</h3>
-  <div>
-    <p>Name: {{band.name}}</p>
-    <p>Genre: {{band.mainGenre}}</p>
-    <p>Origin: {{band.origin}}</p>
-    <p>Members: </p>
-    <ul>
-      <li *ngFor="let member of band.members">
-        <p>{{member}}</p>
-      </li>
-    </ul>
+  <div class="formcontainer">
+    <div class="formchild">
+      <h3><span>id: </span>{{band.id}}</h3>
+      <div>
+        <p>Name: {{band.name}}</p>
+        <p>Genre: {{band.mainGenre}}</p>
+        <p>Origin: {{band.origin}}</p>
+        <p>Members: </p>
+        <ul>
+          <li *ngFor="let member of band.members">
+            <p>{{member}}</p>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button type="button" routerLink="/editBand/{{band.id}}">Edit Band</button>
+        <button type="button" (click)="goBack()">Go back</button>
+      </div>
+    </div>
+    <div class="formchild">
+      <h3>Songs</h3>
+      <ul>
+        <li *ngFor="let song of songs">
+          <a routerLink="/songinfo/{{song.id}}">
+            <span class="badge">{{song.id}}</span> {{song.name}}
+          </a>
+          <button type="button" class="delete" title="delete song"
+            (click)="delete(song)">x</button>
+        </li>
+      </ul>
+      <div>
+        <button type="button" routerLink="/createSong/{{band.id}}">New Song </button>
+      </div>
+    </div>
   </div>
-  <div>
-    <button type="button" routerLink="/editBand/{{band.id}}">Edit Band</button>
-    <button type="button" (click)="goBack()">Go back</button>
-  </div>
+
 </div>

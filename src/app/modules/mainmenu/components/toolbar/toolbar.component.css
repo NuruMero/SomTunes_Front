@@ -1,23 +1,19 @@
 .toolbar {
-  position: absolute;
+  position:relative;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  background-color: #1976d2;
-  color: white;
+  height: 70px;
   font-weight: 600;
   z-index: 100;
 }
 
-.toolbar #darktoolbar {
-  background-color: #1976d2;
+.darktoolbar {
+  background-color: #040812;
   color: white;
 }
 
-.toolbar #lighttoolbar {
+.lighttoolbar {
   background-color: #1976d2;
   color: white;
 }
@@ -42,5 +38,15 @@
 }
 
 .spacer {
+  flex: 3;
+}
+
+.navcontainer {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.navchild {
   flex: 1;
+  padding: 10px;
 }
