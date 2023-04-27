@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SongService } from 'src/app/shared/services/songservice/songservice.service';
 import { BandService } from 'src/app/shared/services/bandservice/bandservice.service';
 import { Song } from 'src/app/shared/models/song';
+import { Band } from 'src/app/shared/models/band';
 
 @Component({
   selector: 'app-createformsongs',
@@ -13,7 +14,8 @@ import { Song } from 'src/app/shared/models/song';
 })
 export class CreateformsongsComponent {
 
-  bandExists : boolean = false;
+  bands : Band[] = [];
+  bandid : number = 0;
 
   songForm = this.formBuilder.group({
     name : ['', Validators.required],
@@ -33,28 +35,19 @@ export class CreateformsongsComponent {
   ) {}
 
   ngOnInit(): void {
-    let bandid = Number(this.route.snapshot.paramMap.get('band'));
-    if (bandid) {
-      this.bandService.getById(bandid)
+    this.bandid = Number(this.route.snapshot.paramMap.get('band'));
+    if (this.bandid) {
+      this.bandService.getById(this.bandid)
         .subscribe(b => {
           this.songForm.patchValue({
             band: b.name
           })
         })
-    }
-  }
-
-  checkIfBandExists(): void {
-    const bandName: string = this.songForm.get('band')?.getRawValue();
-    if (bandName) {
-      this.bandService.getByName(bandName)
-        .subscribe(band => {
-          if(band.name) {
-            this.bandExists = true;
-          } else {
-            this.bandExists = false;
-          }
-        });
+    } else {
+      this.bandService.findAll()
+        .subscribe(b => {
+          this.bands = b
+        })
     }
   }
 
@@ -63,9 +56,8 @@ export class CreateformsongsComponent {
   }
 
   onSubmit() {
-    this.checkIfBandExists();
-    if (!this.bandExists) {
-      alert('Band is not valid.');
+    if (!this.songForm.get('band')?.value) {
+      alert('You need to choose a band!');
       return;
     }
 

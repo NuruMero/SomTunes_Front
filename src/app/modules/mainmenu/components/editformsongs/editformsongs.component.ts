@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { Song } from 'src/app/shared/models/song';
+import { Band } from 'src/app/shared/models/band';
 import { SongService } from 'src/app/shared/services/songservice/songservice.service';
 import { BandService } from 'src/app/shared/services/bandservice/bandservice.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +14,8 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 })
 export class EditformsongsComponent {
 
-  bandExists : boolean = false;
+  bands : Band[] = [];
+  bandid : number = 0;
 
   songForm = this.formBuilder.group({
     name : ['', Validators.required],
@@ -34,22 +36,16 @@ export class EditformsongsComponent {
     private bandService: BandService
   ) {}
 
-  checkIfBandExists(): void {
-    const bandName: string = this.songForm.get('band')?.getRawValue();
-    if (bandName) {
-      this.bandService.getByName(bandName)
-        .subscribe(band => {
-          if(band.name) {
-            this.bandExists = true;
-          } else {
-            this.bandExists = false;
-          }
-        });
-    }
+  ngOnInit(): void {
+    this.getBands();
+    this.getSong();
   }
 
-  ngOnInit(): void {
-    this.getSong();
+  getBands(): void {
+    this.bandService.findAll()
+      .subscribe(b => {
+        this.bands = b
+      })
   }
 
   getSong(): void {
@@ -67,8 +63,6 @@ export class EditformsongsComponent {
               band: b.name,
               lyrics: song.lyrics
             })
-
-            this.checkIfBandExists();
           })
       });
   }
@@ -78,9 +72,8 @@ export class EditformsongsComponent {
   }
 
   onSubmit() {
-    this.checkIfBandExists();
-    if (!this.bandExists) {
-      alert('Band is not valid.');
+    if (!this.songForm.get('band')?.value) {
+      alert('You need to choose a band!');
       return;
     }
 

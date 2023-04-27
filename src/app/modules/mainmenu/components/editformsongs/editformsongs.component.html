@@ -28,12 +28,11 @@
       <br>
 
       <label for="band">Band </label>
-      <input type="text" class="form-control" id="band" formControlName="band" (blur)="checkIfBandExists()">
-      <div *ngIf="(songForm.controls['band'].dirty || songForm.controls['band'].touched)">
-        <div *ngIf="!bandExists">
-          This band doesn't exist in our database. You can add it here:
-        </div>
-      </div>
+      <select class="form-control" id="band" formControlName="band">
+        <option *ngFor="let band of bands">
+            {{band.name}}
+        </option>
+      </select>
       <br>
 
       <button class="btn btn-primary" type="submit" (click)="onSubmit()">Edit </button>
