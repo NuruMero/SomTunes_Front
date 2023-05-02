@@ -1,15 +1,41 @@
-<div className="container">
-  <app-toolbar></app-toolbar>
-</div>
-<div class="content container" role="main">
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
 
-  <div>
-    <router-outlet></router-outlet>
+      <img
+        alt="Logo"
+        src="assets/SomTunes_icon.png"
+        (click)="isNavExpanded = !isNavExpanded"
+      />
+
+      <mat-list-item routerLink="/search">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span *ngIf="isNavExpanded">Search</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/bands">
+        <mat-icon mat-list-icon>mic</mat-icon>
+        <span *ngIf="isNavExpanded">Bands list</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/songs">
+        <mat-icon mat-list-icon>queue_music</mat-icon>
+        <span *ngIf="isNavExpanded">Songs list</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <div className="container">
+    <app-toolbar>
+
+    </app-toolbar>
   </div>
-
-  <!-- Footer -->
-  <footer>
-
-  </footer>
-
-</div>
+  <div class="content container" role="main">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- Footer -->
+    <footer>
+    </footer>
+  </div>
+</mat-sidenav-container>

@@ -1,0 +1,58 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-nav-list h1 {
+  margin: 20px;
+}
+
+mat-nav-list img {
+
+  border-radius: 25px;
+  background: #040812;
+  margin: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 5px;
+  width: 30px;
+  cursor:pointer;
+
+  transition: ease-in-out 0.5s;
+}
+
+mat-nav-list img:hover {
+  background: #04081236;
+}
+
+mat-nav-list img #day {
+  background: white;
+}
+
+mat-nav-list span {
+  font-size: 17px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+mat-radio-group {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.container {
+  justify-content: center;
+}
+
+.searchoptions {
+  display:flex;
+  flex-direction:column;
+  margin:15px;
+  align-items: flex-start;
+}
+
+.searchform {
+  display: flex;
+  flex-direction: column;
+  margin:15px;
+  align-items:flex-start;
+}

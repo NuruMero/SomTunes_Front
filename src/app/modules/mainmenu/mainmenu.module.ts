@@ -11,6 +11,16 @@ import { ContentboxsongsComponent } from './components/contentboxsongs/contentbo
 import { SongdetailsComponent } from './components/songdetails/songdetails.component';
 import { CreateformsongsComponent } from './components/createformsongs/createformsongs.component';
 import { EditformsongsComponent } from './components/editformsongs/editformsongs.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SearchentryComponent } from './components/searchentry/searchentry.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { SearchbandsComponent } from './components/searchbands/searchbands.component';
+import { SearchsongsComponent } from './components/searchsongs/searchsongs.component';
+import { MatDividerModule } from '@angular/material/divider';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,17 +32,30 @@ import { EditformsongsComponent } from './components/editformsongs/editformsongs
     ContentboxsongsComponent,
     SongdetailsComponent,
     CreateformsongsComponent,
-    EditformsongsComponent
+    EditformsongsComponent,
+    SidebarComponent,
+    SearchentryComponent,
+    SearchbandsComponent,
+    SearchsongsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatRadioModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ],
   exports: [
     ToolbarComponent,
     ContentboxComponent
+  ],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ]
 })
 export class MainmenuModule { }

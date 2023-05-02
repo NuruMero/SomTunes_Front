@@ -1,0 +1,29 @@
+<h3>Bands search</h3>
+<mat-divider></mat-divider>
+<div class="formcontainer">
+  <form [formGroup]="bandForm" (ngSubmit)="onSubmit">
+    <div class="searchoptions">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+        <mat-hint>Find those containing X</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Main Genre</mat-label>
+        <input type="text" matInput formControlName="mainGenre">
+        <mat-hint>Find those containing X</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Origin</mat-label>
+        <input type="text" matInput formControlName="origin">
+        <mat-hint>Find those containing X</mat-hint>
+      </mat-form-field>
+
+      <button class="searchsubmit" type="submit" (click)="onSubmit()" mat-fab color="warn">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

@@ -37,16 +37,28 @@
   opacity: 0.8;
 }
 
-.spacer {
-  flex: 3;
-}
-
 .navcontainer {
-  display: inline-flex;
-  align-items: baseline;
+  overflow: hidden;
+  vertical-align: auto;
 }
 
 .navchild {
-  flex: 1;
+  float: left;
   padding: 10px;
+}
+
+.login {
+  float:right;
+  padding: 20px;
+}
+
+.login button {
+  border: none;
+  cursor: pointer;
+  margin:5px;
+}
+
+.maintitle {
+  margin: 10px;
+  font-weight: bolder;
 }

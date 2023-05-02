@@ -1,0 +1,26 @@
+<h2>Search</h2>
+
+<div class="firstbar">
+  <div class="searchoptions">
+    <label id="radiogroup-label">What do you wanna search today?</label>
+
+    <mat-radio-group
+      aria-labelledby="radiogroup-label"
+      [(ngModel)]="searching"
+    >
+      <mat-radio-button color="warn"
+        *ngFor="let option of searchOptions" [value]="option">
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="searchform">
+    <div *ngIf="searching == 'Bands'">
+      <app-searchbands></app-searchbands>
+    </div>
+    <div *ngIf="searching == 'Songs'">
+      <app-searchsongs></app-searchsongs>
+    </div>
+  </div>
+</div>

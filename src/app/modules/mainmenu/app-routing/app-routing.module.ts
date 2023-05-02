@@ -8,9 +8,10 @@ import { ContentboxsongsComponent } from '../components/contentboxsongs/contentb
 import { SongdetailsComponent } from '../components/songdetails/songdetails.component';
 import { CreateformsongsComponent } from '../components/createformsongs/createformsongs.component';
 import { EditformsongsComponent } from '../components/editformsongs/editformsongs.component';
+import { SearchentryComponent } from '../components/searchentry/searchentry.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/bands', pathMatch: 'full'},
+  { path: '', redirectTo: '/search', pathMatch: 'full'},
   { path: 'bands', component: ContentboxComponent},
   { path: 'bandinfo/:id', component: BanddetailsComponent},
   { path: 'createBand', component: CreateformComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'songinfo/:id', component: SongdetailsComponent },
   { path: 'createSong', component: CreateformsongsComponent},
   { path: 'createSong/:band', component: CreateformsongsComponent },
-  { path: 'editSong/:id', component: EditformsongsComponent}
+  { path: 'editSong/:id', component: EditformsongsComponent},
+  { path: 'search', component:SearchentryComponent}
 ]
 
 @NgModule({

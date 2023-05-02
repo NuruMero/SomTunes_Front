@@ -44,6 +44,26 @@ export class BandService {
     )
   }
 
+  //filter
+  filter(name?: string, mainGenre?: string, origin?: string): Observable<Band[]> {
+    let url = `${this.url}/search?`;
+
+    if (name) {
+      url = url.concat("name="+name);
+    }
+    if (mainGenre) {
+      url = url.concat("&mainGenre="+mainGenre);
+    }
+    if (origin) {
+      url = url.concat("&origin="+origin);
+    }
+    console.log(url);
+    return this.http.get<Band[]>(url).pipe(
+      tap(_ => this.log(`filtered bands`)),
+      catchError(this.handleError<Band[]>('filter', []))
+    )
+  }
+
   //create
   create(band: Band):Observable<Band> {
     return this.http.post<Band>(this.url, band, this.httpOptions)
