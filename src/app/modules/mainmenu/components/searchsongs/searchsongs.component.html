@@ -2,6 +2,59 @@
 <mat-divider></mat-divider>
 <div class="formcontainer">
   <form [formGroup]="songForm" (ngSubmit)="onSubmit">
+    <div class="searchoptions">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+        <mat-hint>Name contains X</mat-hint>
+      </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <input type="text" matInput formControlName="genre">
+        <mat-hint>Genre contains X</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Length</mat-label>
+        <input type="number" matInput formControlName="length">
+        <mat-hint>Is of length X or longer</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Band</mat-label>
+        <mat-select formControlName="band">
+          <mat-option *ngFor="let band of bands" [value]="band.id">
+            {{band.name}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Is of band X</mat-hint>
+      </mat-form-field>
+
+    </div>
+    <div class="searchoptions">
+      <mat-form-field class="longfield">
+        <mat-label>Release</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Released after..." formControlName="release_min">
+          <input matEndDate placeholder="Released before..." formControlName="release_max">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+    </div>
+    <div class="searchoptions">
+      <p><label>Remember the lyrics but not the name of the song? Try searching for the parts that you remember!</label></p>
+      <mat-form-field>
+        <mat-label>Lyrics</mat-label>
+        <textarea matInput formControlName="lyrics"></textarea>
+        <mat-hint>Lyrics contain X</mat-hint>
+      </mat-form-field>
+
+      <button class="searchsubmit" type="submit" (click)="onSubmit()" mat-fab color="warn">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
   </form>
 </div>

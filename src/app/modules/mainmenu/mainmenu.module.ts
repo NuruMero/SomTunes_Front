@@ -11,7 +11,6 @@ import { ContentboxsongsComponent } from './components/contentboxsongs/contentbo
 import { SongdetailsComponent } from './components/songdetails/songdetails.component';
 import { CreateformsongsComponent } from './components/createformsongs/createformsongs.component';
 import { EditformsongsComponent } from './components/editformsongs/editformsongs.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchentryComponent } from './components/searchentry/searchentry.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { SearchbandsComponent } from './components/searchbands/searchbands.component';
@@ -21,6 +20,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/mater
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,6 @@ import {MatIconModule} from '@angular/material/icon';
     SongdetailsComponent,
     CreateformsongsComponent,
     EditformsongsComponent,
-    SidebarComponent,
     SearchentryComponent,
     SearchbandsComponent,
     SearchsongsComponent
@@ -48,14 +52,21 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatCardModule,
+    MatListModule
   ],
   exports: [
     ToolbarComponent,
     ContentboxComponent
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })
 export class MainmenuModule { }

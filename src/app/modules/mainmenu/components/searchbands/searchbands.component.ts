@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
-import { BandService } from 'src/app/shared/services/bandservice/bandservice.service';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({

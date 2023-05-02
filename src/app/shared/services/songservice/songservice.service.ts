@@ -44,6 +44,45 @@ export class SongService {
     )
   }
 
+  //filter
+  filter(
+    name?: string,
+    genre?: string,
+    release_min?: string,
+    release_max?: string,
+    length?: number,
+    lyrics?: string,
+    band?: number
+  ): Observable<Song[]> {
+    let url = `${this.url}/search?`;
+
+    if (name) {
+      url = url.concat("name="+name);
+    }
+    if (genre) {
+      url = url.concat("&genre="+genre)
+    }
+    if (release_min) {
+      url = url.concat("&release_min="+release_min)
+    }
+    if (release_max) {
+      url = url.concat("&release_max="+release_max)
+    }
+    if (length) {
+      url = url.concat("&length="+length)
+    }
+    if (lyrics) {
+      url = url.concat("&lyrics="+lyrics)
+    }
+    if (band) {
+      url = url.concat("&band="+band)
+    }
+    return this.http.get<Song[]>(url).pipe(
+      tap(_ => this.log(`filtered songs`)),
+      catchError(this.handleError<Song[]>('filter', []))
+    )
+  }
+
   //create
   create(song: Song): Observable<Song> {
     return this.http.post<Song>(this.url, song, this.httpOptions)

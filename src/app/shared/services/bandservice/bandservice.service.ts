@@ -57,7 +57,6 @@ export class BandService {
     if (origin) {
       url = url.concat("&origin="+origin);
     }
-    console.log(url);
     return this.http.get<Band[]>(url).pipe(
       tap(_ => this.log(`filtered bands`)),
       catchError(this.handleError<Band[]>('filter', []))

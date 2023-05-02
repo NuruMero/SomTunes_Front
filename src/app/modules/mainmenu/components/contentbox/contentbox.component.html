@@ -1,19 +1,43 @@
 <h2>Bands list</h2>
 
 <div>
-  <ul class="bands">
-    <li *ngFor="let band of bands">
-      <a routerLink="/bandinfo/{{band.id}}">
-        <span class="badge">{{band.id}}</span> {{band.name}}
-      </a>
-      <button type="button" class="delete" title="delete band"
-        (click)="delete(band)">x</button>
-    </li>
-  </ul>
+  <table mat-table [dataSource]="bands">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let band">
+        <a routerLink="/bandinfo/{{band.id}}">
+          {{band.name}}
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mainGenre">
+      <th mat-header-cell *matHeaderCellDef>Main Genre</th>
+      <td mat-cell *matCellDef="let band">{{band.mainGenre}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="origin">
+      <th mat-header-cell *matHeaderCellDef>Origin</th>
+      <td mat-cell *matCellDef="let band">{{band.origin}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let band">
+        <button mat-icon-button color="warn" type="button" class="delete" title="delete band"
+        (click)="delete(band)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
 
 <div>
-  <button type="button" routerLink="/createBand">
+  <button mat-raised-button color="primary" type="button" routerLink="/createBand">
     Add Band
   </button>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BandService } from 'src/app/shared/services/bandservice/bandservice.service';
 import { Band } from 'src/app/shared/models/band';
-import { BandFilter } from 'src/app/shared/models/filter/bandfilter';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContentboxComponent {
   bands: Band[] = [];
+
+  displayedColumns: string[] = ['name', 'mainGenre', 'origin', 'delete'];
 
   constructor(
     private bandService: BandService,
