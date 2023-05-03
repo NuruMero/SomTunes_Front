@@ -1,49 +1,79 @@
-<h2>Add a Band</h2>
-
-<div class="formcontainer">
+<mat-card>
   <form [formGroup]="bandForm" (ngSubmit)="onSubmit">
-    <div class="formchild">
-      <label for="name">Name </label>
-      <input type="text" class="form-control" id="name" formControlName="name"
-        required>
-      <div *ngIf="bandForm.controls['name'].invalid &&
-        (bandForm.controls['name'].dirty ||
-        bandForm.controls['name'].touched)">
-        <div *ngIf="bandForm.controls['name'].errors?.['required']">
-          You need to add a name to proceed.
-        </div>
+    <div class="formcontainer">
+      <div class="formchild">
+        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
+          <mat-icon>undo</mat-icon>
+        </button>
       </div>
-      <br>
+      <div class="formchild">
+        <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+          Add
+        </button>
+      </div>
+    </div>
 
-      <label for="mainGenre">Genre </label>
-      <input type="text" class="form-control" id="mainGenre" formControlName="mainGenre">
-      <br>
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Add a Band</h2>
+      </mat-card-title>
+    </mat-card-header>
 
-      <label for="origin">Origin </label>
-      <input type="text" class="form-control" id="origin" formControlName="origin">
-      <br>
+    <div class="formcontainer">
+      <div class="formchild">
+        <mat-card-content>
 
-      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Add</button>
-      <button type="button" (click)="goBack()">Go back</button>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" id="name" matInput formControlName="name" required>
+          </mat-form-field>
+          <div *ngIf="bandForm.controls['name'].invalid &&
+            (bandForm.controls['name'].dirty ||
+            bandForm.controls['name'].touched)">
+              <div *ngIf="bandForm.controls['name'].errors?.['required']">
+                You need to add a name to proceed.
+              </div>
+          </div>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Main Genre</mat-label>
+            <input type="text" id="mainGenre" matInput formControlName="mainGenre">
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Origin</mat-label>
+            <input type="text" id="origin" matInput formControlName="origin">
+          </mat-form-field>
+          <br>
+        </mat-card-content>
+      </div>
     </div>
   </form>
-  <div class="formchild">
-    <label for="tempmember">Add member </label>
-    <input type="text" class="form-control" id="tempmember"
-      [(ngModel)]="tempmember" name="tempmember"/>
-    <button (click)="onSaveMember()">Add to list</button>
-    <br>
 
-    <ul class="members">
-      <li *ngFor="let member of members">
-        <span>{{member}}</span>
-        <button type="button" class="delete"
-          (click)="onDeleteMember(member)">x</button>
-      </li>
-    </ul>
-    <br>
+  <div class="formcontainer">
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Add member</mat-label>
+        <input type="text" id="tempmember" matInput [(ngModel)]="tempmember" name="tempmember">
+      </mat-form-field>
 
+      <button (click)="onSaveMember()" mat-icon-button color="primary">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </mat-card-content>
+
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let member of members">
+          <span>{{member}}</span>
+          <button mat-icon-button color="warn" type="button" class="delete" title="delete member" (click)="onDeleteMember(member)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
   </div>
-</div>
-
+</mat-card>
 

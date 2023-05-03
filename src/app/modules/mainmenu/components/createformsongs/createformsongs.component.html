@@ -1,50 +1,82 @@
-<h2>Add a Song</h2>
-
-<div class="formcontainer">
+<mat-card>
   <form [formGroup]="songForm" (ngSubmit)="onSubmit">
-    <div class="formchild">
-      <label for="name">Name </label>
-      <input type="text" class="form-control" id="name" formControlName="name"
-        required>
-      <div *ngIf="songForm.controls['name'].invalid &&
-      (songForm.controls['name'].dirty ||
-      songForm.controls['name'].touched)">
-        <div *ngIf="songForm.controls['name'].errors?.['required']">
-          You need to add a name to proceed.
-        </div>
+    <div class="formcontainer">
+      <div class="formchild">
+        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
+          <mat-icon>undo</mat-icon>
+        </button>
       </div>
-      <br>
-
-      <label for="genre">Genre </label>
-      <input type="text" class="form-control" id="genre" formControlName="genre">
-      <br>
-
-      <label for="release">Release date </label>
-      <input type="date" class="form-control" id="release" formControlName="release">
-      <br>
-
-      <label for="length">Length </label>
-      <input type="number" class="form-control" id="length" formControlName="length">
-      <br>
-
-      <div *ngIf="!bandid">
-        <label for="band">Band </label>
-        <select class="form-control" id="band" formControlName="band">
-         <option *ngFor="let band of bands">
-           {{band.name}}
-         </option>
-        </select>
-        <br>
+      <div class="formchild">
+        <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+          Add
+        </button>
       </div>
-
-
-      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Add</button>
-      <button type="button" (click)="goBack()">Go back</button>
     </div>
-    <div class="formchild">
-      <label for="lyrics"><h3>Lyrics </h3></label>
-      <textarea class="form-control" id="lyrics" formControlName="lyrics"></textarea>
+
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Add a Song</h2>
+      </mat-card-title>
+    </mat-card-header>
+
+    <div class="formcontainer">
+      <div class="formchild">
+        <mat-card-content>
+
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" id="name" matInput formControlName="name" required>
+          </mat-form-field>
+          <div *ngIf="songForm.controls['name'].invalid &&
+            (songForm.controls['name'].dirty ||
+            songForm.controls['name'].touched)">
+              <div *ngIf="songForm.controls['name'].errors?.['required']">
+                You need to add a name to proceed.
+              </div>
+          </div>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Genre</mat-label>
+            <input type="text" id="genre" matInput formControlName="genre">
+          </mat-form-field>
+          <br>
+
+          <mat-form-field class="longfield">
+            <mat-label>Release date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="release">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Length</mat-label>
+            <input matInput type="number" class="form-control" id="length" formControlName="length">
+          </mat-form-field>
+          <br>
+
+          <mat-form-field *ngIf="!bandid">
+            <mat-label>Band</mat-label>
+            <mat-select formControlName="band">
+              <mat-option *ngFor="let band of bands" [value]="band">
+                {{band.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+
+        </mat-card-content>
+      </div>
+
+      <div class="formchild">
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Lyrics</mat-label>
+            <textarea matInput formControlName="lyrics"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+      </div>
     </div>
   </form>
-
-</div>
+</mat-card>

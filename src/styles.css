@@ -68,11 +68,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .formcontainer {
   display: flex;
+  padding: 10px;
 }
 
 .formchild {
   flex: 1;
   min-width: 200px;
-  padding: 20px;
+  padding: 15px;
   float:left;
 }

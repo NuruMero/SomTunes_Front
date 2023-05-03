@@ -60,7 +60,7 @@ export class EditformsongsComponent {
               genre: song.genre,
               release: song.release,
               length: song.length,
-              band: b.name,
+              band: b.id,
               lyrics: song.lyrics
             })
           })
@@ -89,7 +89,7 @@ export class EditformsongsComponent {
     const lyrics = this.songForm.get('lyrics')?.value;
     const id = this.id;
 
-    this.bandService.getByName(
+    this.bandService.getById(
       this.songForm.get('band')?.value
     ).subscribe(b => {
       let band = b.id;
