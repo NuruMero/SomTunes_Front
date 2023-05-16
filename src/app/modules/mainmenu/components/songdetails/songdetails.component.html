@@ -1,14 +1,14 @@
 <div *ngIf="song">
 
   <mat-card>
-    <div class="formcontainer">
-      <div class="formchild">
-        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
+    <div class="smallformchild">
+      <div class="smallformchild">
+        <button mat-icon-button type="button" title="Go Back" (click)="goBack()" class="separated">
           <mat-icon>undo</mat-icon>
         </button>
       </div>
-      <div class="formchild">
-        <button mat-raised-button color="primary" type="button" routerLink="/editSong/{{song.id}}">
+      <div class="smallformchild">
+        <button mat-raised-button color="primary" type="button" routerLink="/editSong/{{song.id}}" class="separated details_right">
           Edit Song
         </button>
       </div>

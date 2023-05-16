@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SongService } from 'src/app/shared/services/songservice/songservice.service';
 import { Song } from 'src/app/shared/models/song';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { RemovedialogComponent } from '../removedialog/removedialog.component';
 
 @Component({
   selector: 'app-contentboxsongs',
@@ -14,6 +16,7 @@ export class ContentboxsongsComponent {
   displayedColumns: string[] = ['name', 'genre', 'release', 'length', 'delete'];
 
   constructor(
+    private dialog: MatDialog,
     private songService: SongService,
     private route: ActivatedRoute
     ) {}
@@ -28,6 +31,24 @@ export class ContentboxsongsComponent {
 
   ngOnChanges(): void {
     this.getSongs();
+  }
+
+  openDialog(song: Song) {
+    const dialogRef = this.dialog.open(RemovedialogComponent, {
+      data:{
+        message: 'Are you sure you want to delete?',
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No'
+        }
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.delete(song);
+      }
+    })
   }
 
   getSongs(): void {

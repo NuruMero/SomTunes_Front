@@ -39,8 +39,8 @@ mat-radio-group {
   margin-right: 10px;
 }
 
-.container {
-  justify-content: center;
+.adaptwidth {
+  width: 70%;
 }
 
 .searchoptions {

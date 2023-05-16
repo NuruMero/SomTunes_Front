@@ -1,28 +1,29 @@
 <mat-card>
-  <form [formGroup]="bandForm" (ngSubmit)="onSubmit">
-    <div class="formcontainer">
-      <div class="formchild">
-        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
-          <mat-icon>undo</mat-icon>
-        </button>
-      </div>
-      <div class="formchild">
-        <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+  <div class="formcontainer">
+    <div class="smallformchild">
+      <button mat-icon-button type="button" title="Go Back" (click)="goBack()" class="separated">
+        <mat-icon>undo</mat-icon>
+      </button>
+    </div>
+    <form id="basicform" [formGroup]="bandForm" (ngSubmit)="onSubmit">
+      <div class="smallformchild">
+        <button mat-raised-button color="primary" type="button" (click)="onSubmit()" class="separated details_right">
           Add
         </button>
       </div>
-    </div>
+    </form>
+  </div>
 
-    <mat-card-header>
-      <mat-card-title>
-        <h2>Add a Band</h2>
-      </mat-card-title>
-    </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Add a Band</h2>
+    </mat-card-title>
+  </mat-card-header>
 
-    <div class="formcontainer">
-      <div class="formchild">
+  <div class="formcontainer">
+    <div class="formchild">
+      <form id="basicform" [formGroup]="bandForm" (ngSubmit)="onSubmit">
         <mat-card-content>
-
           <mat-form-field>
             <mat-label>Name</mat-label>
             <input type="text" id="name" matInput formControlName="name" required>
@@ -48,32 +49,32 @@
           </mat-form-field>
           <br>
         </mat-card-content>
-      </div>
+      </form>
     </div>
-  </form>
 
-  <div class="formcontainer">
-    <mat-card-content>
-      <mat-form-field>
-        <mat-label>Add member</mat-label>
-        <input type="text" id="tempmember" matInput [(ngModel)]="tempmember" name="tempmember">
-      </mat-form-field>
+    <div class="formchild">
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Add member</mat-label>
+          <input type="text" id="tempmember" matInput [(ngModel)]="tempmember" name="tempmember">
+        </mat-form-field>
 
-      <button (click)="onSaveMember()" mat-icon-button color="primary">
-        <mat-icon>person_add</mat-icon>
-      </button>
-    </mat-card-content>
+        <button (click)="onSaveMember()" mat-icon-button color="primary">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </mat-card-content>
 
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let member of members">
-          <span>{{member}}</span>
-          <button mat-icon-button color="warn" type="button" class="delete" title="delete member" (click)="onDeleteMember(member)">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let member of members">
+            <span>{{member}}</span>
+            <button mat-icon-button color="warn" type="button" class="delete" title="delete member" (click)="onDeleteMember(member)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </div>
   </div>
 </mat-card>
 

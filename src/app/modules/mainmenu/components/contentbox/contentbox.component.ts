@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BandService } from 'src/app/shared/services/bandservice/bandservice.service';
 import { Band } from 'src/app/shared/models/band';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { RemovedialogComponent } from '../removedialog/removedialog.component';
 
 @Component({
   selector: 'app-contentbox',
@@ -14,6 +16,7 @@ export class ContentboxComponent {
   displayedColumns: string[] = ['name', 'mainGenre', 'origin', 'delete'];
 
   constructor(
+    private dialog: MatDialog,
     private bandService: BandService,
     private route: ActivatedRoute
     ) {}
@@ -28,6 +31,24 @@ export class ContentboxComponent {
 
   ngOnChanges(): void {
     this.getBands();
+  }
+
+  openDialog(band: Band) {
+    const dialogRef = this.dialog.open(RemovedialogComponent, {
+      data:{
+        message: 'Are you sure you want to delete?',
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No'
+        }
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.delete(band);
+      }
+    })
   }
 
   getBands(): void {

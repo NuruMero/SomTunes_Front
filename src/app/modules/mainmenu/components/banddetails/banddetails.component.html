@@ -2,13 +2,13 @@
 
   <mat-card>
     <div class="formcontainer">
-      <div class="formchild">
-        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
+      <div class="smallformchild">
+        <button mat-icon-button type="button" title="Go Back" (click)="goBack()" class="separated">
           <mat-icon>undo</mat-icon>
         </button>
       </div>
-      <div class="formchild">
-        <button mat-raised-button color="primary" type="button" routerLink="/editBand/{{band.id}}">
+      <div class="smallformchild">
+        <button mat-raised-button color="primary" type="button" routerLink="/editBand/{{band.id}}" class="separated details_right">
           Edit Band
         </button>
       </div>
@@ -50,14 +50,14 @@
             <a routerLink="/songinfo/{{song.id}}">
               {{song.name}}
             </a>
-            <button mat-icon-button color="warn" type="button" class="delete" title="delete song" (click)="delete(song)">
+            <button mat-icon-button color="warn" type="button" class="delete" title="delete song" (click)="openDialog(song)">
               <mat-icon>close</mat-icon>
             </button>
           </mat-list-item>
         </mat-list>
 
         <div>
-          <button mat-raised-button type="button" routerLink="/createSong/{{band.id}}">New Song </button>
+          <button mat-raised-button type="button" routerLink="/createSong/{{band.id}}" class="separated">New Song </button>
         </div>
       </div>
 

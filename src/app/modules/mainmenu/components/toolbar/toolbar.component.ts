@@ -9,8 +9,4 @@ export class ToolbarComponent {
 
   constructor(
   ) {}
-
-  onSubmitSearch() {
-
-  }
 }

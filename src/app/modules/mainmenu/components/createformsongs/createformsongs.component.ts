@@ -71,11 +71,13 @@ export class CreateformsongsComponent {
     const release = this.songForm.get('release')?.value;
     const length = this.songForm.get('length')?.value;
     const lyrics = this.songForm.get('lyrics')?.value;
+    const band_id = this.songForm.get('band')?.value.id;
 
-    this.bandService.getByName(
-      this.songForm.get('band')?.value
+    this.bandService.getById(
+      band_id
     ).subscribe(b => {
       let band = b.id;
+      console.log(band);
       this.songService.create({
         name, genre, release, length, lyrics, band
       } as Song).subscribe(() => {

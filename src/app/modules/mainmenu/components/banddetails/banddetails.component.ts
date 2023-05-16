@@ -5,6 +5,8 @@ import { BandService } from 'src/app/shared/services/bandservice/bandservice.ser
 import { SongService } from 'src/app/shared/services/songservice/songservice.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { RemovedialogComponent } from '../removedialog/removedialog.component';
 
 @Component({
   selector: 'app-banddetails',
@@ -18,6 +20,7 @@ export class BanddetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private dialog: MatDialog,
     private bandService: BandService,
     private songService: SongService,
     private location: Location
@@ -25,6 +28,24 @@ export class BanddetailsComponent {
 
   ngOnInit(): void {
     this.getBand();
+  }
+
+  openDialog(song: Song) {
+    const dialogRef = this.dialog.open(RemovedialogComponent, {
+      data:{
+        message: 'Are you sure you want to delete?',
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No'
+        }
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.delete(song);
+      }
+    })
   }
 
   getBand(): void {

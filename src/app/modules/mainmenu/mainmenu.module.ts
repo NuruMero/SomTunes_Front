@@ -26,6 +26,8 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RemovedialogComponent } from './components/removedialog/removedialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {MatListModule} from '@angular/material/list';
     EditformsongsComponent,
     SearchentryComponent,
     SearchbandsComponent,
-    SearchsongsComponent
+    SearchsongsComponent,
+    RemovedialogComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +61,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatTableModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   exports: [
     ToolbarComponent,

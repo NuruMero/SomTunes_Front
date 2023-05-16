@@ -25,6 +25,7 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 footer {
@@ -75,5 +76,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex: 1;
   min-width: 200px;
   padding: 15px;
+}
+
+.smallformchild {
+  flex: 1;
+  min-width: 200px;
+}
+
+.separated {
+  margin: 15px;
+}
+
+.occupy_all {
+  width: 100%;
+}
+
+.details_left {
   float:left;
+}
+
+.details_right {
+  float:right;
 }

@@ -1,13 +1,13 @@
 <mat-card>
   <form [formGroup]="songForm" (ngSubmit)="onSubmit">
     <div class="formcontainer">
-      <div class="formchild">
-        <button mat-icon-button type="button" title="Go Back" (click)="goBack()">
+      <div class="smallformchild">
+        <button mat-icon-button type="button" title="Go Back" (click)="goBack()" class="separated">
           <mat-icon>undo</mat-icon>
         </button>
       </div>
-      <div class="formchild">
-        <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+      <div class="smallformchild">
+        <button mat-raised-button color="primary" type="button" (click)="onSubmit()" class="separated details_right">
           Add
         </button>
       </div>
