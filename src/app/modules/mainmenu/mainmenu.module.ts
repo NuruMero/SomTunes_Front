@@ -28,6 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RemovedialogComponent } from './components/removedialog/removedialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { RemovedialogComponent } from './components/removedialog/removedialog.co
     MatTableModule,
     MatCardModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ],
   exports: [
     ToolbarComponent,

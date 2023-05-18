@@ -6,7 +6,14 @@
     </div>
 
     <div class="login">
-      (Introducir login)
+      <button mat-raised-button [matMenuTriggerFor]="menu">Join us!</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Log in</button>
+        <div class="logincontent">
+          <label>Haven't joined yet? Create your account!</label>
+        </div>
+        <button mat-menu-item>Sign in</button>
+      </mat-menu>
     </div>
   </div>
 </nav>

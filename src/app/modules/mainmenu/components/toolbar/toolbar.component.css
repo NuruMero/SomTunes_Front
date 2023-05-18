@@ -49,7 +49,8 @@
 
 .login {
   float:right;
-  padding: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 .login button {
@@ -61,4 +62,8 @@
 .maintitle {
   margin: 10px;
   font-weight: bolder;
+}
+
+.logincontent {
+  margin: 10px;
 }
