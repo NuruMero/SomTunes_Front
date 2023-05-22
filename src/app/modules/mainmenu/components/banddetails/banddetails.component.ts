@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { RemovedialogComponent } from '../removedialog/removedialog.component';
+import { Auth, getAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-banddetails',
@@ -18,13 +19,24 @@ export class BanddetailsComponent {
   @Input() band?: Band;
   songs: Song[] = [];
 
+  currentUser = this.auth.currentUser;
+
   constructor(
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private bandService: BandService,
     private songService: SongService,
-    private location: Location
-  ) {}
+    private location: Location,
+    private auth: Auth = getAuth()
+  ) {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.currentUser = this.auth.currentUser;
+      } else {
+        this.currentUser = null;
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.getBand();

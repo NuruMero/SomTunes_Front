@@ -50,7 +50,7 @@
             <a routerLink="/songinfo/{{song.id}}">
               {{song.name}}
             </a>
-            <button mat-icon-button color="warn" type="button" class="delete" title="delete song" (click)="openDialog(song)">
+            <button mat-icon-button color="warn" type="button" class="delete" title="delete song" (click)="openDialog(song)" [disabled]="!currentUser">
               <mat-icon>close</mat-icon>
             </button>
           </mat-list-item>

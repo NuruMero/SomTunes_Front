@@ -4,6 +4,7 @@ import { Band } from 'src/app/shared/models/band';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RemovedialogComponent } from '../removedialog/removedialog.component';
+import { Auth, getAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-contentbox',
@@ -15,11 +16,22 @@ export class ContentboxComponent {
 
   displayedColumns: string[] = ['name', 'mainGenre', 'origin', 'delete'];
 
+  currentUser = this.auth.currentUser;
+
   constructor(
     private dialog: MatDialog,
     private bandService: BandService,
-    private route: ActivatedRoute
-    ) {}
+    private route: ActivatedRoute,
+    private auth: Auth = getAuth()
+    ) {
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.currentUser = this.auth.currentUser;
+        } else {
+          this.currentUser = null;
+        }
+      })
+    }
 
   ngOnInit(): void {
     if (Object.keys(this.route.snapshot.params).length) {

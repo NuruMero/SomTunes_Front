@@ -1,0 +1,39 @@
+<mat-card>
+  <div class="formcontainer">
+    <div class="smallformchild">
+      <button mat-icon-button type="button" title="Go Back" (click)="goBack()" class="separated">
+        <mat-icon>undo</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Welcome aboard!</h2>
+    </mat-card-title>
+  </mat-card-header>
+
+  <div class="formcontainer">
+    <form id="basicform" [formGroup]="formReg" (ngSubmit)="onSubmit">
+      <mat-card-content>
+        <div class="formchild">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" id="email" matInput formControlName="email" required>
+          </mat-form-field>
+        </div>
+        <div class="formchild">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" id="password" matInput formControlName="password" required>
+          </mat-form-field>
+        </div>
+        <div class="formchild">
+          <button mat-raised-button color="primary" type="button" (click)="onSubmit()">
+            Create account
+          </button>
+        </div>
+      </mat-card-content>
+    </form>
+  </div>
+</mat-card>

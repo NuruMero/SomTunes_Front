@@ -5,14 +5,18 @@
       <h1 class="maintitle">SomTunes</h1>
     </div>
 
-    <div class="login">
+    <div *ngIf="!currentUser" class="login">
       <button mat-raised-button [matMenuTriggerFor]="menu">Join us!</button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Log in</button>
-        <div class="logincontent">
-          <label>Haven't joined yet? Create your account!</label>
-        </div>
-        <button mat-menu-item>Sign in</button>
+        <button mat-menu-item routerLink="/register">Register</button>
+        <button mat-menu-item routerLink="/login">Log in</button>
+      </mat-menu>
+    </div>
+
+    <div *ngIf="currentUser" class="login">
+      <button mat-raised-button [matMenuTriggerFor]="loginMenu">Welcome, {{currentUser.displayName || currentUser.email}}</button>
+      <mat-menu #loginMenu="matMenu">
+        <button mat-menu-item color="warn" type="button" (click)="logout()">Log out</button>
       </mat-menu>
     </div>
   </div>

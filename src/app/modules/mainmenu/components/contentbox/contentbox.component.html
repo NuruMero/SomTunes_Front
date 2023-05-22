@@ -30,7 +30,7 @@
         <th mat-header-cell *matHeaderCellDef>Delete</th>
         <td mat-cell *matCellDef="let band">
           <button mat-icon-button color="warn" type="button" class="delete" title="delete band"
-          (click)="openDialog(band)">
+          (click)="openDialog(band)" [disabled]="!currentUser">
             <mat-icon>close</mat-icon>
           </button>
         </td>

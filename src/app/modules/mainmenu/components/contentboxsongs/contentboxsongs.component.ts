@@ -4,6 +4,7 @@ import { Song } from 'src/app/shared/models/song';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RemovedialogComponent } from '../removedialog/removedialog.component';
+import { Auth, getAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-contentboxsongs',
@@ -15,11 +16,22 @@ export class ContentboxsongsComponent {
 
   displayedColumns: string[] = ['name', 'genre', 'release', 'length', 'delete'];
 
+  currentUser = this.auth.currentUser;
+
   constructor(
     private dialog: MatDialog,
     private songService: SongService,
-    private route: ActivatedRoute
-    ) {}
+    private route: ActivatedRoute,
+    private auth: Auth = getAuth()
+    ) {
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.currentUser = this.auth.currentUser;
+        } else {
+          this.currentUser = null;
+        }
+      })
+    }
 
   ngOnInit(): void {
     if (Object.keys(this.route.snapshot.params).length) {

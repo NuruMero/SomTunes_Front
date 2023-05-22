@@ -29,6 +29,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RemovedialogComponent } from './components/removedialog/removedialog.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import {MatMenuModule} from '@angular/material/menu';
     SearchentryComponent,
     SearchbandsComponent,
     SearchsongsComponent,
-    RemovedialogComponent
+    RemovedialogComponent,
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
