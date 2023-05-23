@@ -8,7 +8,7 @@ import { Song } from '../../models/song';
 })
 export class SongService {
 
-  private url = 'http://localhost:8080/api/songs'; //URL to the API, change on different implementation
+  private url = 'http://ec2-3-82-20-188.compute-1.amazonaws.com/api/songs'; //URL to the API, change on different implementation
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'
