@@ -8,7 +8,7 @@ import { Band } from '../../models/band';
 })
 export class BandService {
 
-  private url = 'http://ec2-3-82-20-188.compute-1.amazonaws.com/api/bands'; //URL to the API, change on different implementation
+  private url = 'http://ec2-16-170-253-90.eu-north-1.compute.amazonaws.com/api/bands'; //URL to the API, change on different implementation
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'
